@@ -101,7 +101,7 @@ const SalaryCalculator = () => {
         {/* GitHub 链接和访问量计数 */}
         <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
           <a 
-            href="https://github.com/YourUsername/worth-calculator" 
+            href="https://github.com/zippland/worth-calculator" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:text-gray-900 transition-colors"
@@ -244,7 +244,7 @@ const SalaryCalculator = () => {
               onChange={handleInputChange}
               options={[
                 { label: '普通同事', value: '1.0' },
-                { label: '烦人同事多', value: '0.95' },
+                { label: 'SB同事多', value: '0.95' },
                 { label: '优秀同事多', value: '1.05' },
               ]}
             />
