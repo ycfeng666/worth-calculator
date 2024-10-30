@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from 'react';
-import { Wallet, Github, Star} from 'lucide-react'; // 保留需要的组件
+import { Wallet, Github} from 'lucide-react'; // 保留需要的组件
 
 
 const SalaryCalculator = () => {
