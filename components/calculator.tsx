@@ -260,8 +260,8 @@ const SalaryCalculator = () => {
                 { label: '专科及以下', value: '0.8' },
                 { label: '普通本科', value: '1.0' },
                 { label: '92本科', value: '1.2' },
-                { label: '普通/Coursework硕士', value: '1.4' },
-                { label: '92/Research硕士', value: '1.6' },
+                { label: '普/授课硕', value: '1.4' },
+                { label: '92/研究硕', value: '1.6' },
                 { label: '普通博士', value: '1.8' },
                 { label: '名校博士', value: '2.0' },
               ]}
