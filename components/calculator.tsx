@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from 'react';
-import { Wallet } from 'lucide-react'; // 保留需要的组件
+import { Wallet, Github, Star} from 'lucide-react'; // 保留需要的组件
 
 
 const SalaryCalculator = () => {
@@ -98,15 +98,39 @@ const SalaryCalculator = () => {
         <h1 className="text-3xl font-bold text-gray-800">
           这b班上得值不值·测算版
         </h1>
-        <div className="text-sm text-gray-500">
-          拿走工资前，请先算算这班值不值得上
+        {/* GitHub 链接和访问量计数 */}
+        <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
+          <a 
+            href="https://github.com/YourUsername/worth-calculator" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:text-gray-900 transition-colors"
+          >
+            <Github className="w-4 h-4" />
+            <span className="hidden sm:inline">Star on</span>
+            <span>GitHub</span>
+          </a>
+          <div className="w-px h-4 bg-gray-300"></div>
+          <a 
+            href="https://hits.seeyoufarm.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5"
+          >
+            <img 
+              src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FYourUsername%2Fworth-calculator&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=true"
+              alt="访问量"
+              className="h-5"
+            />
+          </a>
         </div>
       </div>
+      
 
-      <div className="bg-white rounded-lg shadow-lg">
-        <div className="p-6 space-y-6">
-          {/* 薪资与工作时间 */}
-          <div className="space-y-4">
+      <div className="bg-white rounded-xl shadow-xl shadow-gray-200/50">
+        <div className="p-6 space-y-8">
+          {/* 薪资与工作时间 section */}
+          <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700">年薪（元）</label>
               <div className="flex items-center gap-2 mt-1">
@@ -244,20 +268,22 @@ const SalaryCalculator = () => {
         </div>
       </div>
 
-      <div className="bg-gray-50 border rounded-lg p-4">
-        <div className="grid grid-cols-3 gap-4">
+      {/* 结果卡片优化 */}
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 shadow-inner">
+        <div className="grid grid-cols-3 gap-8">
           <div>
-            <div className="text-sm text-gray-500">年工作天数</div>
-            <div className="text-lg font-medium">{calculateWorkingDays()}天</div>
+            <div className="text-sm font-medium text-gray-500">年工作天数</div>
+            <div className="text-2xl font-semibold mt-1">{calculateWorkingDays()}天</div>
           </div>
           <div>
-            <div className="text-sm text-gray-500">平均日薪</div>
-            <div className="text-lg font-medium">¥{calculateDailySalary().toFixed(2)}</div>
+            <div className="text-sm font-medium text-gray-500">平均日薪</div>
+            <div className="text-2xl font-semibold mt-1">¥{calculateDailySalary().toFixed(2)}</div>
           </div>
           <div>
-            <div className="text-sm text-gray-500">工作性价比</div>
-            <div className={`text-lg font-medium ${getValueAssessment().color}`}>
-              {value.toFixed(2)} ({getValueAssessment().text})
+            <div className="text-sm font-medium text-gray-500">工作性价比</div>
+            <div className={`text-2xl font-semibold mt-1 ${getValueAssessment().color}`}>
+              {value.toFixed(2)}
+              <span className="text-base ml-2">({getValueAssessment().text})</span>
             </div>
           </div>
         </div>
