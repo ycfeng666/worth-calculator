@@ -10,13 +10,13 @@ const SalaryCalculator = () => {
     workDaysPerWeek: 5,       // 每周工作天数
     annualLeave: 5,           // 年假天数
     publicHolidays: 11,       // 法定节假日
-    workHours: 8,             // 工作时长
-    commuteHours: 1,          // 通勤时长
-    breakHours: 1,            // 预备时长
+    workHours: 10,             // 工作时长
+    commuteHours: 2,          // 通勤时长
+    breakHours: 2,            // 午休时长
     workEnvironment: '1.0',   // 工作环境系数
     heterogeneity: '1.0',     // 异性环境系数
     teamwork: '1.0',          // 同事环境系数
-    education: '1.0'          // 学历系数
+    education: '1.6'          // 学历系数
   });
 
   const calculateWorkingDays = useCallback(() => {
@@ -176,9 +176,11 @@ const SalaryCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">日工作时长</label>
+                <label className="block text-sm font-medium text-gray-700">日工作时长/h</label>
                 <input
                   type="number"
+                  min="1"
+                  max="24"
                   value={formData.workHours}
                   onChange={(e) => handleInputChange('workHours', e.target.value)}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -188,7 +190,7 @@ const SalaryCalculator = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">通勤时长</label>
+                <label className="block text-sm font-medium text-gray-700">通勤时长/h</label>
                 <input
                   type="number"
                   value={formData.commuteHours}
@@ -197,7 +199,7 @@ const SalaryCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">午休时长</label>
+                <label className="block text-sm font-medium text-gray-700">午休时长/h</label>
                 <input
                   type="number"
                   value={formData.breakHours}
@@ -218,10 +220,10 @@ const SalaryCalculator = () => {
               value={formData.workEnvironment}
               onChange={handleInputChange}
               options={[
+                { label: '偏僻地区的工厂/工地/户外', value: '0.8' },
+                { label: '工厂/工地/户外', value: '0.9' },
                 { label: '普通环境', value: '1.0' },
-                { label: '偏僻地区', value: '0.8' },
-                { label: '工厂工地', value: '0.9' },
-                { label: 'CBD', value: '1.1' },
+                { label: 'CBD/体制内', value: '1.1' },
               ]}
             />
 
@@ -231,8 +233,8 @@ const SalaryCalculator = () => {
               value={formData.heterogeneity}
               onChange={handleInputChange}
               options={[
-                { label: '一般', value: '1.0' },
-                { label: '没好看的', value: '0.9' },
+                { label: '没有好看的', value: '0.9' },
+                { label: '好看的不多不少', value: '1.0' },
                 { label: '很多好看的', value: '1.1' },
               ]}
             />
@@ -243,25 +245,25 @@ const SalaryCalculator = () => {
               value={formData.teamwork}
               onChange={handleInputChange}
               options={[
-                { label: '普通同事', value: '1.0' },
-                { label: 'SB同事多', value: '0.95' },
-                { label: '优秀同事多', value: '1.05' },
+                { label: '脑残同事较多', value: '0.95' },
+                { label: '都是普通同事', value: '1.0' },
+                { label: '优秀同事较多', value: '1.05' },
               ]}
             />
 
             <RadioGroup
-              label="学历要求"
+              label="个人学历"
               name="education"
               value={formData.education}
               onChange={handleInputChange}
               options={[
                 { label: '专科及以下', value: '0.8' },
                 { label: '普通本科', value: '1.0' },
-                { label: '211本科', value: '1.2' },
-                { label: '普通硕士', value: '1.4' },
-                { label: '985硕士', value: '1.6' },
+                { label: '92本科', value: '1.2' },
+                { label: '普通/Coursework硕士', value: '1.4' },
+                { label: '92/Research硕士', value: '1.6' },
                 { label: '普通博士', value: '1.8' },
-                { label: '211博士', value: '2.0' },
+                { label: '名校博士', value: '2.0' },
               ]}
             />
           </div>
