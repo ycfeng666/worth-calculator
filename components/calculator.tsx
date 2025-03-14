@@ -58,6 +58,7 @@ const SalaryCalculator = () => {
         return -0.05 * commuteHours + 1;
     };
     const handleInputChange = (name: string, value: string) => {
+        if(!value) value = "0";
         setFormData(prev => ({
             ...prev,
             [name]: parseFloat(value)
@@ -300,7 +301,7 @@ const SalaryCalculator = () => {
                     </div>
                     <div>
                         <div className="text-sm font-medium text-gray-500">平均日薪</div>
-                        <div className="text-2xl font-semibold mt-1">¥{calculateDailySalary().valueOf()}</div>
+                        <div className="text-2xl font-semibold mt-1">¥{calculateDailySalary().toFixed(2)}</div>
                     </div>
                     <div>
                         <div className="text-sm font-medium text-gray-500">工作性价比</div>
